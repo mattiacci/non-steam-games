@@ -7,4 +7,4 @@ set COMMA_SEPARATED_EXES_TO_WATCH=Minecraft.Windows.exe
 set LAUNCHER_EXE=""
 
 
-start "" /min ..\src\launcher.bat
+call ..\src\launcher.bat

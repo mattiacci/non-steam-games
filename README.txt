@@ -1,16 +1,21 @@
+Here are other games that I haven't bothered to add. Feel free.
+
+Icons can can be extracted from *.exe files with ResourcesExtract or similar.
+
+
 Battle.net
 ----------
+
 All games: "C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch <gameid>"
 where <gameid> is
-  CoD: Black Ops 4:     VIPR
-  Destiny 2:            DST2
+
   Diablo 3:             D3
   Hearthstone:          WTCG
   HOTS:                 Hero
-  Overwatch:            Pro
   Starcraft Remastered: S1
   Starcraft 2:          S2
   World of Warcraft:    WoW
+
 
 UPlay
 -----
@@ -26,11 +31,3 @@ For Honor: "uplay://launch/569/0"
 
 Watch_Dogs: "uplay://launch/274/0"
   icon: C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Watch_Dogs\bin\watch_dogs.exe
-
-
-Windows 10 Store
-----------------
-
-Minecraft Win 10 Ed
-"C\Windows\explorer.exe" "shell:AppsFolder\Microsoft.MinecraftUWP_8wekyb3d8bbwe!App"
-  watch: Minecraft.Windows.exe

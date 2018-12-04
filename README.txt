@@ -9,7 +9,6 @@ Battle.net
 All games: "C:\Program Files (x86)\Battle.net\Battle.net.exe" --exec="launch <gameid>"
 where <gameid> is
 
-  Diablo 3:             D3
   Hearthstone:          WTCG
   HOTS:                 Hero
   Starcraft Remastered: S1

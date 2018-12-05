@@ -5,27 +5,27 @@ setlocal EnableExtensions
 
 if not %LAUNCHER_EXE% == "" (
   for /f "tokens=1 usebackq" %%x in (`tasklist /nh /fi "IMAGENAME eq %LAUNCHER_EXE%"`) do (
-    if /i %%~x == %LAUNCHER_EXE% goto LAUNCHER
+    if /i %%~x == %LAUNCHER_EXE% goto WAITOPEN
   )
   start "" %COMMAND%
   timeout /T 1 > NUL
 )
-:LAUNCHER
+:WAITOPEN
 start "" %COMMAND%
 timeout /T 1 > NUL
-for %%p in (%EXES_TO_WATCH%) do (
-  for /f "tokens=1 usebackq" %%x in (`tasklist /nh /fi "IMAGENAME eq %%~p"`) do (
-    if /i %%~x == %%~p goto WAITCLOS
+for /f "tokens=*" %%x in ('tasklist /nh') do (
+  for %%p in (%EXES_TO_WATCH%) do (
+    echo %%x | findstr /b /i /c:"%%~p " > nul && goto APPSTARTED
   )
 )
-goto LAUNCHER
-:WAITCLOS
-echo Waiting for %EXES_TO_WATCH% to exit...
-:CHECK
+goto WAITOPEN
+:APPSTARTED
+echo Waiting for game to exit...
+:WAITEXIT
 timeout /T 1 > NUL
-for %%p in (%EXES_TO_WATCH%) do (
-  for /f "tokens=1 usebackq" %%x in (`tasklist /nh /fi "IMAGENAME eq %%~p"`) do (
-    if /i %%~x == %%~p goto CHECK
+for /f "tokens=*" %%x in ('tasklist /nh') do (
+  for %%p in (%EXES_TO_WATCH%) do (
+    echo %%x | findstr /b /i /c:"%%~p " > nul && goto WAITEXIT
   )
 )
 

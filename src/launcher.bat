@@ -8,11 +8,11 @@ if not %LAUNCHER_EXE% == "" (
     if /i %%~x == %LAUNCHER_EXE% goto WAITOPEN
   )
   start "" %COMMAND%
-  timeout /T 1 > NUL
+  timeout /T 2 > NUL
 )
 :WAITOPEN
 start "" %COMMAND%
-timeout /T 1 > NUL
+timeout /T 2 > NUL
 for /f "tokens=*" %%x in ('tasklist /nh') do (
   for %%p in (%EXES_TO_WATCH%) do (
     echo %%x | findstr /b /i /c:"%%~p " > nul && goto APPSTARTED

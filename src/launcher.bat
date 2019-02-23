@@ -11,6 +11,8 @@ if not %LAUNCHER_EXE% == "" (
   timeout /T 2 > NUL
 )
 :WAITOPEN
+set /a RETRIES=5
+:RETRYOPEN
 start "" %COMMAND%
 timeout /T 2 > NUL
 for /f "tokens=*" %%x in ('tasklist /nh') do (
@@ -18,7 +20,10 @@ for /f "tokens=*" %%x in ('tasklist /nh') do (
     echo %%x | findstr /b /i /c:"%%~p " > nul && goto APPSTARTED
   )
 )
-goto WAITOPEN
+SET /a RETRIES-=1
+if %RETRIES% GTR 0 (
+  goto RETRYOPEN
+)
 :APPSTARTED
 echo Waiting for game to exit...
 :WAITEXIT

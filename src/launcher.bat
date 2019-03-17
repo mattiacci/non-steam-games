@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableExtensions
 
-..\src\setconsole.exe /minimize
+..\src\setconsole.exe /hide
 
 if not %LAUNCHER_EXE% == "" (
   for /f "tokens=1 usebackq" %%x in (`tasklist /nh /fi "IMAGENAME eq %LAUNCHER_EXE%"`) do (
